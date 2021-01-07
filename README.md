@@ -14,7 +14,7 @@ You can then run `helm search repo suda` to see the charts.
 
 ## Charts
 
-See [Artifact Hub](https://artifacthub.io/packages/search?org=suda) or [charts](./charts/) for a complete list.
+See [Artifact Hub](https://artifacthub.io/packages/search?repo=suda) or [charts](./charts/) for a complete list.
 
 ## Contributing
 
