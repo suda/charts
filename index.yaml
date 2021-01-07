@@ -1,0 +1,33 @@
+apiVersion: v1
+entries:
+  ackee:
+  - apiVersion: v2
+    appVersion: 2.4.1
+    created: "2021-01-07T13:35:34.238974811Z"
+    description: A Helm chart for Ackee analytics tool
+    digest: a70c2333a5b9209f1801ad56d4bf97194c95c6935c6f6637bcaf3550dc8c98d4
+    home: https://github.com/suda/charts/ackee
+    maintainers:
+    - email: admin@suda.pl
+      name: Wojtek Siudzinski
+    name: ackee
+    type: application
+    urls:
+    - https://github.com/suda/charts/releases/download/ackee-0.2.0/ackee-0.2.0.tgz
+    version: 0.2.0
+  personal-ovpn:
+  - apiVersion: v2
+    appVersion: "2.4"
+    created: "2021-01-07T13:35:34.317564036Z"
+    description: Roll your own OpenVPN server
+    digest: 56c4d005695327f559994f54bdbd229d018e1859b0187c5de32a55c0f6d9e9f2
+    home: https://github.com/suda/charts/personal-ovpn
+    maintainers:
+    - email: admin@suda.pl
+      name: suda
+    name: personal-ovpn
+    type: application
+    urls:
+    - https://github.com/suda/charts/releases/download/personal-ovpn-0.2.0/personal-ovpn-0.2.0.tgz
+    version: 0.2.0
+generated: "2021-01-07T13:35:34.1398648Z"
