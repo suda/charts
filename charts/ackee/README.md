@@ -52,7 +52,7 @@ The following table lists the configurable parameters of the `ackee` chart and t
 | ackee.username                                              | Username for the default Ackee user                                   | `ackee`                       |
 | ackee.passwordSecret                                        | Name of the secret containing the password for the default Ackee user | `ackee-password`              |
 | image.repository                                            | Ackee Image name                                                      | `electerious/ackee`           |
-| image.tag                                                   | Ackee Image tag                                                       | `1.7.0`                       |
+| image.tag                                                   | Ackee Image tag                                                       | `2.4.1`                       |
 | image.pullPolicy                                            | Image pull policy                                                     | `IfNotPresent`                |
 | service.type                                                | Kubernetes Service type                                               | `ClusterIP`                   |
 | service.port                                                | Ackee service port                                                    | `80`                          |
