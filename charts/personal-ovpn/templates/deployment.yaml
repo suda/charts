@@ -1,0 +1,89 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "personal-ovpn.fullname" . }}
+  namespace: {{ .Values.namespace.name }}
+  labels:
+    app.kubernetes.io/name: {{ include "personal-ovpn.name" . }}
+    helm.sh/chart: {{ include "personal-ovpn.chart" . }}
+    app.kubernetes.io/instance: {{ .Release.Name }}
+    app.kubernetes.io/managed-by: {{ .Release.Service }}
+spec:
+  strategy:
+    type: RollingUpdate
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: {{ include "personal-ovpn.name" . }}
+      app.kubernetes.io/instance: {{ .Release.Name }}
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: {{ include "personal-ovpn.name" . }}
+        app.kubernetes.io/instance: {{ .Release.Name }}
+    spec:
+      containers:
+        - image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          name: {{ .Chart.Name }}
+          ports:
+            - containerPort: 1194
+              name: openvpn
+              protocol: {{ .Values.service.protocol }}
+          securityContext:
+            capabilities:
+              add:
+                - NET_ADMIN
+          volumeMounts:
+            {{- if .Values.automatic.enabled }}
+            - name: data
+              mountPath: {{ .Values.automatic.persistence.mountPath }}
+            {{- else }}
+            - name: ovpn0-key
+              mountPath: /etc/openvpn/pki/private
+            - name: ovpn0-cert
+              mountPath: /etc/openvpn/pki/issued
+            - name: ovpn0-pki
+              mountPath: /etc/openvpn/pki
+            - name: ovpn0-conf
+              mountPath: /etc/openvpn
+            - name: ccd0
+              mountPath: /etc/openvpn/ccd
+            {{- end }}
+          resources:
+            {{- toYaml .Values.resources | nindent 12 }}
+      {{- with .Values.nodeSelector }}
+      nodeSelector:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+    {{- with .Values.affinity }}
+      affinity:
+        {{- toYaml . | nindent 8 }}
+    {{- end }}
+    {{- with .Values.tolerations }}
+      tolerations:
+        {{- toYaml . | nindent 8 }}
+    {{- end }}
+      volumes:
+        {{- if .Values.automatic.enabled }}
+        - name: data
+          persistentVolumeClaim:
+            claimName: {{ if .Values.automatic.persistence.existingClaim }}{{ .Values.automatic.persistence.existingClaim }}{{- else }}{{ include "personal-ovpn.name" . }}{{- end }}
+        {{- else }}
+        - name: ovpn0-key
+          secret:
+            secretName: ovpn0-key
+            defaultMode: 0600
+        - name: ovpn0-cert
+          secret:
+            secretName: ovpn0-cert
+        - name: ovpn0-pki
+          secret:
+            secretName: ovpn0-pki
+            defaultMode: 0600
+        - name: ovpn0-conf
+          configMap:
+            name: ovpn0-conf
+        - name: ccd0
+          configMap:
+            name: ccd0
+        {{- end }}

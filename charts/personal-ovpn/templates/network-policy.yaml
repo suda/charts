@@ -1,0 +1,22 @@
+{{- if .Values.limitTraficToNamespace }}
+kind: NetworkPolicy
+apiVersion: networking.k8s.io/v1
+metadata:
+  name: {{ include "personal-ovpn.fullname" . }}
+  namespace: {{ .Values.namespace.name }}
+  labels:
+    app.kubernetes.io/name: {{ include "personal-ovpn.name" . }}
+    helm.sh/chart: {{ include "personal-ovpn.chart" . }}
+    app.kubernetes.io/instance: {{ .Release.Name }}
+    app.kubernetes.io/managed-by: {{ .Release.Service }}
+spec:
+  podSelector: { }
+  policyTypes:
+    - Egress
+  egress:
+    - to:
+      - ipBlock:
+          cidr: 0.0.0.0/0
+          except:
+          - {{ .Values.limitedCidr }}
+{{- end }}

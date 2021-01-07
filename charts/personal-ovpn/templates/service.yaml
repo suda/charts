@@ -1,0 +1,29 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "personal-ovpn.fullname" . }}
+  namespace: {{ .Values.namespace.name }}
+  labels:
+    app.kubernetes.io/name: {{ include "personal-ovpn.name" . }}
+    helm.sh/chart: {{ include "personal-ovpn.chart" . }}
+    app.kubernetes.io/instance: {{ .Release.Name }}
+    app.kubernetes.io/managed-by: {{ .Release.Service }}
+  {{- if .Values.service.annotations }}
+  annotations: {{ toYaml .Values.service.annotations | indent 4 }}
+  {{- end }}
+spec:
+  ports:
+    - port: {{ .Values.service.port }}
+      targetPort: openvpn
+      protocol: {{ .Values.service.protocol }}
+      name: openvpn
+  selector:
+    app.kubernetes.io/name: {{ include "personal-ovpn.name" . }}
+    app.kubernetes.io/instance: {{ .Release.Name }}
+  type: {{ .Values.service.type }}
+  {{- if .Values.service.loadBalancerIP }}
+  loadBalancerIP: {{ .Values.service.loadBalancerIP }}
+  {{- end }}
+  {{- if .Values.service.externalTrafficPolicy }}
+  externalTrafficPolicy: {{ .Values.service.externalTrafficPolicy }}
+  {{- end }}

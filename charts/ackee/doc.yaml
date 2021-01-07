@@ -1,0 +1,13 @@
+project:
+  name: Ackee
+  shortName: ackee
+  url: https://ackee.electerious.com/
+  description: Self-hosted analytics tool for those who care about privacy
+repository:
+  url: https://suda.github.io/charts/
+  name: ackee
+chart:
+  name: ackee
+release:
+  name: ackee-release
+  namespace: ackee

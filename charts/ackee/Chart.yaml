@@ -1,0 +1,12 @@
+apiVersion: v2
+appVersion: "2.4.1"
+description: A Helm chart for Ackee analytics tool
+name: ackee
+version: 0.2.0
+type: application
+source:
+  - https://github.com/suda/charts/ackee
+home: https://github.com/suda/charts/ackee
+maintainers:
+  - name: Wojtek Siudzinski
+    email: admin@suda.pl
