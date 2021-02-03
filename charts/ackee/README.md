@@ -14,9 +14,6 @@ $ helm install ackee-release suda/ackee -n ackee
 
 This chart deploys  on a [Kubernetes](http://kubernetes.io) cluster using the [Helm](https://helm.sh) package manager.
 
-## Prerequisites
-
-
 ## Installing the Chart
 
 To install the chart with the release name `ackee-release`:
@@ -39,44 +36,42 @@ $ helm delete ackee-release -n ackee
 
 The command removes all the Kubernetes components associated with the chart and deletes the release.
 
-## Configuration
+## Values
 
-The following table lists the configurable parameters of the `ackee` chart and their default values.
-
-|                          Parameter                          |                              Description                              |            Default            |
-|-------------------------------------------------------------|-----------------------------------------------------------------------|-------------------------------|
-| nameOverride                                                | Overrides name template                                               | `""`                          |
-| fullnameOverride                                            | Overrides fullname template                                           | `""`                          |
-| replicaCount                                                | Number of Ackee replicas to create                                    | `1`                           |
-| ackee.mongodb                                               | Address to MongoDB for ackee                                          | `mongodb://mongo:27017/ackee` |
-| ackee.username                                              | Username for the default Ackee user                                   | `ackee`                       |
-| ackee.passwordSecret                                        | Name of the secret containing the password for the default Ackee user | `ackee-password`              |
-| image.repository                                            | Ackee Image name                                                      | `electerious/ackee`           |
-| image.tag                                                   | Ackee Image tag                                                       | `2.4.1`                       |
-| image.pullPolicy                                            | Image pull policy                                                     | `IfNotPresent`                |
-| service.type                                                | Kubernetes Service type                                               | `ClusterIP`                   |
-| service.port                                                | Ackee service port                                                    | `80`                          |
-| ingress.enabled                                             | Enable ingress controller resource                                    | `false`                       |
-| ingress.annotations.nginx.ingress.kubernetes.io/enable-cors |                                                                       | `"true"`                      |
-| ingress.path                                                |                                                                       | `/`                           |
-| ingress.tls                                                 | Ingress TLS configuration                                             | `[]`                          |
-| livenessProbe.enabled                                       | Turn on and off liveness probe                                        | `true`                        |
-| livenessProbe.initialDelaySeconds                           | Delay before liveness probe is initiated                              | `10`                          |
-| livenessProbe.periodSeconds                                 | How often to perform the probe                                        | `60`                          |
-| livenessProbe.timeoutSeconds                                | When the probe times out                                              | `2`                           |
-| livenessProbe.successThreshold                              | Minimum consecutive successes for the probe                           | `1`                           |
-| livenessProbe.failureThreshold                              | Minimum consecutive failures for the probe                            | `3`                           |
-| readinessProbe.enabled                                      | Turn on and off readiness probe                                       | `true`                        |
-| readinessProbe.initialDelaySeconds                          | Delay before readiness probe is initiated                             | `10`                          |
-| readinessProbe.periodSeconds                                | How often to perform the probe                                        | `60`                          |
-| readinessProbe.timeoutSeconds                               | When the probe times out                                              | `2`                           |
-| readinessProbe.successThreshold                             | Minimum consecutive successes for the probe                           | `1`                           |
-| readinessProbe.failureThreshold                             | Minimum consecutive failures for the probe                            | `3`                           |
-| resources                                                   | CPU/Memory resource requests/limits                                   | `{}`                          |
-| nodeSelector                                                | Node selector for pod assignment                                      | `{}`                          |
-| tolerations                                                 | Optional deployment tolerations                                       | `[]`                          |
-| affinity                                                    | Map of node/pod affinities                                            | `{}`                          |
-
+| Key | Type | Default | Description |
+|-----|------|---------|-------------|
+| ackee.mongodb | string | `"mongodb://mongo:27017/ackee"` |  |
+| ackee.passwordSecret | string | `"ackee-password"` |  |
+| ackee.username | string | `"ackee"` |  |
+| affinity | object | `{}` |  |
+| fullnameOverride | string | `""` |  |
+| image.pullPolicy | string | `"IfNotPresent"` |  |
+| image.repository | string | `"electerious/ackee"` |  |
+| image.tag | string | `"2.4.1"` |  |
+| ingress.annotations."nginx.ingress.kubernetes.io/enable-cors" | string | `"true"` |  |
+| ingress.enabled | bool | `false` |  |
+| ingress.hosts[0] | string | `"chart-example.local"` |  |
+| ingress.path | string | `"/"` |  |
+| ingress.tls | list | `[]` |  |
+| livenessProbe.enabled | bool | `true` |  |
+| livenessProbe.failureThreshold | int | `3` |  |
+| livenessProbe.initialDelaySeconds | int | `10` |  |
+| livenessProbe.periodSeconds | int | `60` |  |
+| livenessProbe.successThreshold | int | `1` |  |
+| livenessProbe.timeoutSeconds | int | `2` |  |
+| nameOverride | string | `""` |  |
+| nodeSelector | object | `{}` |  |
+| readinessProbe.enabled | bool | `true` |  |
+| readinessProbe.failureThreshold | int | `3` |  |
+| readinessProbe.initialDelaySeconds | int | `10` |  |
+| readinessProbe.periodSeconds | int | `60` |  |
+| readinessProbe.successThreshold | int | `1` |  |
+| readinessProbe.timeoutSeconds | int | `2` |  |
+| replicaCount | int | `1` |  |
+| resources | object | `{}` |  |
+| service.port | int | `80` |  |
+| service.type | string | `"ClusterIP"` |  |
+| tolerations | list | `[]` |  |
 
 Specify each parameter using the `--set key=value[,key=value]` argument to `helm install`. For example:
 
@@ -90,3 +85,9 @@ installing the chart. For example:
 ```console
 $ helm install ackee-release suda/ackee -n ackee --values values.yaml
 ```
+
+## Maintainers
+
+| Name | Email | Url |
+| ---- | ------ | --- |
+| Wojtek Siudzinski | admin@suda.pl |  |
