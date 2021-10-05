@@ -16,12 +16,18 @@ ackee:
   username: ackee
   # Name of the secret containing the password for the default Ackee user
   passwordSecret: ackee-password
+  # Specifies how long a generated token is valid
+  ttl: 3600000
+  # Custom name for the tracking script of Ackee to avoid getting blocked by browser extensions
+  trackerName: tracker
+  # Setting CORS headers
+  corsHeaders: ""
 
 image:
   # Ackee Image name
   repository: electerious/ackee
   # Ackee Image tag
-  tag: 2.4.1
+  tag: 3.2.0
   # Image pull policy
   pullPolicy: IfNotPresent
 
