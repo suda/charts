@@ -40,14 +40,17 @@ The command removes all the Kubernetes components associated with the chart and 
 
 | Key | Type | Default | Description |
 |-----|------|---------|-------------|
+| ackee.corsHeaders | string | `""` |  |
 | ackee.mongodb | string | `"mongodb://mongo:27017/ackee"` |  |
 | ackee.passwordSecret | string | `"ackee-password"` |  |
+| ackee.trackerName | string | `"tracker"` |  |
+| ackee.ttl | int | `3600000` |  |
 | ackee.username | string | `"ackee"` |  |
 | affinity | object | `{}` |  |
 | fullnameOverride | string | `""` |  |
 | image.pullPolicy | string | `"IfNotPresent"` |  |
 | image.repository | string | `"electerious/ackee"` |  |
-| image.tag | string | `"2.4.1"` |  |
+| image.tag | string | `"3.2.0"` |  |
 | ingress.annotations."nginx.ingress.kubernetes.io/enable-cors" | string | `"true"` |  |
 | ingress.enabled | bool | `false` |  |
 | ingress.hosts[0] | string | `"chart-example.local"` |  |
