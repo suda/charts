@@ -2,6 +2,23 @@ apiVersion: v1
 entries:
   ackee:
   - apiVersion: v2
+    appVersion: 3.2.0
+    created: "2021-10-05T10:28:59.576317061Z"
+    description: A Helm chart for Ackee analytics tool
+    digest: f6120d834299f95a300c6db6a898bc8e2609f60747f559d8b60426be56a2c0e2
+    home: https://github.com/suda/charts/tree/main/charts/ackee
+    maintainers:
+    - email: admin@suda.pl
+      name: suda
+      url: https://suda.pl
+    name: ackee
+    sources:
+    - https://github.com/suda/charts/tree/main/charts/ackee
+    type: application
+    urls:
+    - https://github.com/suda/charts/releases/download/ackee-0.2.1/ackee-0.2.1.tgz
+    version: 0.2.1
+  - apiVersion: v2
     appVersion: 2.4.1
     created: "2021-01-07T13:35:34.238974811Z"
     description: A Helm chart for Ackee analytics tool
@@ -58,4 +75,4 @@ entries:
     urls:
     - https://github.com/suda/charts/releases/download/personal-ovpn-0.2.0/personal-ovpn-0.2.0.tgz
     version: 0.2.0
-generated: "2021-10-05T09:20:52.311433165Z"
+generated: "2021-10-05T10:28:59.576329261Z"
