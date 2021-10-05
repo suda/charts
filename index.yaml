@@ -18,6 +18,20 @@ entries:
   personal-ovpn:
   - apiVersion: v2
     appVersion: "2.4"
+    created: "2021-10-05T09:20:52.311399264Z"
+    description: Roll your own OpenVPN server
+    digest: b3690310516ba41e16ee80f3a6616d4a22ee970887718d44624d9d1488ebd583
+    home: https://github.com/suda/charts/tree/main/charts/personal-ovpn
+    maintainers:
+    - email: admin@suda.pl
+      name: suda
+    name: personal-ovpn
+    type: application
+    urls:
+    - https://github.com/suda/charts/releases/download/personal-ovpn-0.2.2/personal-ovpn-0.2.2.tgz
+    version: 0.2.2
+  - apiVersion: v2
+    appVersion: "2.4"
     created: "2021-01-07T13:38:37.787808122Z"
     description: Roll your own OpenVPN server
     digest: e9449605b31df345813efbfc19b0e447a6f1adb5ce53f35b05b842672252dac1
@@ -44,4 +58,4 @@ entries:
     urls:
     - https://github.com/suda/charts/releases/download/personal-ovpn-0.2.0/personal-ovpn-0.2.0.tgz
     version: 0.2.0
-generated: "2021-01-07T13:35:34.1398648Z"
+generated: "2021-10-05T09:20:52.311433165Z"
