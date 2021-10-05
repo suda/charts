@@ -93,4 +93,4 @@ $ helm install ackee-release suda/ackee -n ackee --values values.yaml
 
 | Name | Email | Url |
 | ---- | ------ | --- |
-| Wojtek Siudzinski | admin@suda.pl |  |
+| suda | admin@suda.pl | https://suda.pl |
