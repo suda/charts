@@ -25,22 +25,22 @@ spec:
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           env:
             - name: ACKEE_MONGODB
-              value: {{ .Values.ackee.mongodb }}
+              value: "{{ .Values.ackee.mongodb }}"
             - name: ACKEE_PORT
               value: "3000"
             - name: ACKEE_USERNAME
-              value: {{ .Values.ackee.username }}
+              value: "{{ .Values.ackee.username }}"
             - name: ACKEE_PASSWORD
               valueFrom:
                 secretKeyRef:
                   name: {{ .Values.ackee.passwordSecret }}
                   key: ACKEE_PASSWORD
             - name: ACKEE_TTL
-              value: {{ .Values.ackee.ttl }}
+              value: "{{ .Values.ackee.ttl }}"
             - name: ACKEE_TRACKER
-              value: {{ .Values.ackee.trackerName }}
+              value: "{{ .Values.ackee.trackerName }}"
             - name: ACKEE_ALLOW_ORIGIN
-              value: {{ .Values.ackee.corsHeaders }}
+              value: "{{ .Values.ackee.corsHeaders }}"
           ports:
             - name: http
               containerPort: 3000
