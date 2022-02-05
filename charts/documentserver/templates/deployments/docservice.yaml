@@ -16,16 +16,6 @@ spec:
       labels:
         app: docservice
     spec:
-#      securityContext:
-#        runAsUser: 101
-#        runAsGroup: 101
-      # topologySpreadConstraints:
-      # - maxSkew: 1
-        # topologyKey: doks.digitalocean.com/node-pool
-        # whenUnsatisfiable: DoNotSchedule
-        # labelSelector:
-          # matchLabels:
-            # app: docservice
       volumes:
         - name: ds-files
           persistentVolumeClaim:
