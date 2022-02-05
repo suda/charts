@@ -4,6 +4,18 @@
 
 Helm chart for installing ONLYOFFICE Docs in Kubernetes
 
+**Homepage:** <https://github.com/suda/charts/tree/main/charts/documentserver>
+
+## Maintainers
+
+| Name | Email | Url |
+| ---- | ------ | --- |
+| suda | admin@suda.pl | https://suda.pl |
+
+## Source Code
+
+* <https://github.com/suda/charts/tree/main/charts/documentserver>
+
 ## Values
 
 | Key | Type | Default | Description |
