@@ -17,8 +17,7 @@ Helm chart for installing ONLYOFFICE Docs in Kubernetes
 | connections.redisHost | string | `"redis-master"` |  |
 | converter.containerImage | string | `"onlyoffice/docs-converter-de:7.0.0.132"` |  |
 | converter.replicas | int | `2` |  |
-| converter.resources.limits | object | `{}` |  |
-| converter.resources.requests | object | `{}` |  |
+| converter.resources | object | `{}` |  |
 | docservice.containerImage | string | `"onlyoffice/docs-docservice-de:7.0.0.132"` |  |
 | docservice.livenessProbe.failureThreshold | int | `5` |  |
 | docservice.livenessProbe.httpGet.path | string | `"/index.html"` |  |
@@ -35,8 +34,7 @@ Helm chart for installing ONLYOFFICE Docs in Kubernetes
 | docservice.readinessProbe.timeoutSeconds | int | `3` |  |
 | docservice.readinessProbeEnabled | bool | `true` |  |
 | docservice.replicas | int | `2` |  |
-| docservice.resources.limits | object | `{}` |  |
-| docservice.resources.requests | object | `{}` |  |
+| docservice.resources | object | `{}` |  |
 | docservice.startupProbe.failureThreshold | int | `30` |  |
 | docservice.startupProbe.httpGet.path | string | `"/index.html"` |  |
 | docservice.startupProbe.httpGet.port | int | `8000` |  |
@@ -63,8 +61,7 @@ Helm chart for installing ONLYOFFICE Docs in Kubernetes
 | proxy.livenessProbe.timeoutSeconds | int | `3` |  |
 | proxy.livenessProbeEnabled | bool | `true` |  |
 | proxy.proxyContainerImage | string | `"onlyoffice/docs-proxy-de:7.0.0.132"` |  |
-| proxy.resources.limits | object | `{}` |  |
-| proxy.resources.requests | object | `{}` |  |
+| proxy.resources | object | `{}` |  |
 | proxy.startupProbe.failureThreshold | int | `30` |  |
 | proxy.startupProbe.httpGet.path | string | `"/index.html"` |  |
 | proxy.startupProbe.httpGet.port | int | `8888` |  |
