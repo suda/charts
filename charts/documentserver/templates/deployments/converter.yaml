@@ -1,0 +1,57 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: converter
+  labels:
+    app: converter
+spec:
+  replicas: {{ .Values.converter.replicas }}
+  selector:
+    matchLabels:
+      app: converter
+  template:
+    metadata:
+      labels:
+        app: converter
+    spec:
+      volumes:
+        {{- if .Values.persistence.enabled }}
+        - name: ds-files
+          persistentVolumeClaim:
+            claimName: ds-files
+        {{- end }}
+        - name: ds-license
+          secret:
+            secretName: license
+      containers:
+        - name: converter
+          image: {{ .Values.converter.containerImage }}
+          resources: {{- toYaml .Values.converter.resources | nindent 12 }}
+          env:
+          {{- if .Values.connections.dbPasswordSecret }}
+          - name: DB_PWD
+            valueFrom:
+              secretKeyRef:
+                name: postgresql
+                key: postgresql-password
+          {{- end }}
+          {{- if .Values.connections.amqpPasswordSecret }}
+          - name: AMQP_PWD
+            valueFrom:
+              secretKeyRef:
+                name: rabbitmq
+                key: rabbitmq-password
+          {{- end }}
+          envFrom:
+          - secretRef:
+              name: jwt
+          - configMapRef:
+              name: documentserver
+          volumeMounts:
+          {{- if .Values.persistence.enabled }}
+          - name: ds-files
+            mountPath: /var/lib/{{ .Values.product.name }}/documentserver/App_Data/cache/files
+          {{- end }}
+          - name: ds-license
+            mountPath: /var/www/{{ .Values.product.name }}/Data
+            readOnly: true

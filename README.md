@@ -20,6 +20,10 @@ See [Artifact Hub](https://artifacthub.io/packages/search?repo=suda) or [charts]
 
 [All contributions (no matter if small) are always welcome](http://contributionswelcome.org/).
 
+## Acknowledgements
+
+* [`documentserver` chart](charts/documentserver) is based on [ONLYOFFICE chart/documentation](https://github.com/ONLYOFFICE/Kubernetes-Docs)
+
 ## License
 
 [Apache 2.0 License](./LICENSE)

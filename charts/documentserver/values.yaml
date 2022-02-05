@@ -1,0 +1,156 @@
+product:
+  name: onlyoffice
+
+connections:
+  # IP address or the name of the database
+  dbHost: postgresql
+  # Database user
+  dbUser: postgres
+  # Database server port number
+  dbPort: "5432"
+  # Secret name to use for the database password
+  dbPasswordSecret: ""
+  # IP address or the name of the redis host
+  redisHost: redis-master
+  # IP address or the name of the message broker
+  amqpHost: rabbitmq
+  # Messabe broker user
+  amqpUser: user
+  # Messabe-broker protocol
+  amqpProto: amqp
+  # Secret name to use for the database password
+  amqpPasswordSecret: ""
+
+persistence:
+  # Enabling persistence
+  enabled: false
+  # Storage class name
+  storageClass: ""
+  # Storage volume size
+  size: 8Gi
+
+metrics:
+  # Statsd installation
+  enabled: false
+
+example:
+  # Choice of example installation
+  enabled: false
+  # Example container image name
+  containerImage: onlyoffice/docs-example:7.0.0.132
+
+docservice:
+  # docservice replicas quantity
+  replicas: 1
+  # docservice container image name
+  containerImage: onlyoffice/docs-docservice-de:7.0.0.132
+  # Enable readinessProbe for docservice
+  readinessProbeEnabled: false
+  readinessProbe:
+    failureThreshold: 2
+    httpGet:
+      path: /index.html
+      port: 8000
+    periodSeconds: 10
+    successThreshold: 1
+    timeoutSeconds: 3
+  # Enable livenessProbe for docservice
+  livenessProbeEnabled: false
+  livenessProbe:
+    failureThreshold: 5
+    httpGet:
+      path: /index.html
+      port: 8000
+    periodSeconds: 10
+    successThreshold: 1
+    timeoutSeconds: 3
+  # Enable startupProbe for docservice
+  startupProbeEnabled: false
+  startupProbe:
+    httpGet:
+      path: /index.html
+      port: 8000
+    failureThreshold: 30
+    periodSeconds: 10
+
+  # CPU/Memory resource requests/limits
+  resources: {}
+    # limits:
+    #  cpu: 100m
+    #  memory: 128Mi
+    # requests:
+    #  cpu: 100m
+    #  memory: 128Mi
+
+proxy:
+  # docservice proxy container image name
+  proxyContainerImage: onlyoffice/docs-proxy-de:7.0.0.132
+  # Enable livenessProbe for proxy
+  livenessProbeEnabled: false
+  livenessProbe:
+    failureThreshold: 3
+    httpGet:
+      path: /index.html
+      port: 8888
+    periodSeconds: 10
+    successThreshold: 1
+    timeoutSeconds: 3
+  # Enable startupProbe for proxy
+  startupProbeEnabled: false
+  startupProbe:
+    httpGet:
+      path: /index.html
+      port: 8888
+    failureThreshold: 30
+    periodSeconds: 10
+
+  # CPU/Memory resource requests/limits
+  resources: {}
+    # limits:
+    #  cpu: 100m
+    #  memory: 128Mi
+    # requests:
+    #  cpu: 100m
+    #  memory: 128Mi
+
+converter:
+  # Converter replicas quantity
+  replicas: 1
+  # Converter container image name
+  containerImage: onlyoffice/docs-converter-de:7.0.0.132
+
+  # CPU/Memory resource requests/limits
+  resources: {}
+    # limits:
+    #  cpu: 100m
+    #  memory: 128Mi
+    # requests:
+    #  cpu: 100m
+    #  memory: 128Mi
+
+jwt:
+  # JWT enabling parameter
+  enabled: true
+  # JWT secret
+  secret: MYSECRET
+
+service:
+  # documentserver service type
+  type: ClusterIP
+  # documentserver service port
+  port: 8888
+
+ingress:
+  # Installation of ingress service
+  enabled: false
+  ssl:
+    # Installation SSL for ingress service
+    enabled: false
+    # Host for ingress
+    host: example.com
+    # Secret name for SSL
+    secret: tls
+
+grafana_ingress:
+  # Installation grafana of ingress service
+  enabled: false
