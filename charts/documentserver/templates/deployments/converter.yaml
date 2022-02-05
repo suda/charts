@@ -28,16 +28,20 @@ spec:
           image: {{ .Values.converter.containerImage }}
           resources: {{- toYaml .Values.converter.resources | nindent 12 }}
           env:
+          {{- if .Values.connections.dbPasswordSecret }}
           - name: DB_PWD
             valueFrom:
               secretKeyRef:
                 name: postgresql
                 key: postgresql-password
+          {{- end }}
+          {{- if .Values.connections.amqpPasswordSecret }}
           - name: AMQP_PWD
             valueFrom:
               secretKeyRef:
                 name: rabbitmq
                 key: rabbitmq-password
+          {{- end }}
           envFrom:
           - secretRef:
               name: jwt

@@ -8,6 +8,8 @@ connections:
   dbUser: postgres
   # Database server port number
   dbPort: "5432"
+  # Secret name to use for the database password
+  dbPasswordSecret: ""
   # IP address or the name of the redis host
   redisHost: redis-master
   # IP address or the name of the message broker
@@ -16,6 +18,8 @@ connections:
   amqpUser: user
   # Messabe-broker protocol
   amqpProto: amqp
+  # Secret name to use for the database password
+  amqpPasswordSecret: ""
 
 persistence:
   # Enabling persistence
