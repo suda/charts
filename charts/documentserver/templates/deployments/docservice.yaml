@@ -17,9 +17,11 @@ spec:
         app: docservice
     spec:
       volumes:
+        {{- if .Values.persistence.enabled }}
         - name: ds-files
           persistentVolumeClaim:
             claimName: ds-files
+        {{- end }}
         - name: ds-license
           secret:
             secretName: license
@@ -38,9 +40,11 @@ spec:
           envFrom:
           - configMapRef:
               name: documentserver
+          {{- if .Values.persistence.enabled }}
           volumeMounts:
           - name: ds-files
             mountPath: /var/lib/{{ .Values.product.name }}/documentserver/App_Data/cache/files
+          {{- end }}
 
         - name: docservice
           image: {{ .Values.docservice.containerImage }}
@@ -73,8 +77,10 @@ spec:
           - configMapRef:
               name: documentserver
           volumeMounts:
+          {{- if .Values.persistence.enabled }}
           - name: ds-files
             mountPath: /var/lib/{{ .Values.product.name }}/documentserver/App_Data/cache/files
+          {{- end }}
           - name: ds-license
             mountPath: /var/www/{{ .Values.product.name }}/Data
             readOnly: true

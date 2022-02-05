@@ -18,6 +18,8 @@ connections:
   amqpProto: amqp
 
 persistence:
+  # Enabling persistence
+  enabled: false
   # Storage class name
   # storageClass: ""
   # Storage volume size

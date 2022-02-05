@@ -14,13 +14,12 @@ spec:
       labels:
         app: converter
     spec:
-#      securityContext:
-#        runAsUser: 101
-#        runAsGroup: 101
       volumes:
+        {{- if .Values.persistence.enabled }}
         - name: ds-files
           persistentVolumeClaim:
             claimName: ds-files
+        {{- end }}
         - name: ds-license
           secret:
             secretName: license
@@ -45,8 +44,10 @@ spec:
           - configMapRef:
               name: documentserver
           volumeMounts:
+          {{- if .Values.persistence.enabled }}
           - name: ds-files
             mountPath: /var/lib/{{ .Values.product.name }}/documentserver/App_Data/cache/files
+          {{- end }}
           - name: ds-license
             mountPath: /var/www/{{ .Values.product.name }}/Data
             readOnly: true

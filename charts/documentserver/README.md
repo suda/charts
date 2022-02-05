@@ -62,6 +62,7 @@ Helm chart for installing ONLYOFFICE Docs in Kubernetes
 | jwt.enabled | bool | `true` |  |
 | jwt.secret | string | `"MYSECRET"` |  |
 | metrics.enabled | bool | `false` |  |
+| persistence.enabled | bool | `false` |  |
 | persistence.size | string | `"8Gi"` |  |
 | product.name | string | `"onlyoffice"` |  |
 | proxy.livenessProbe.failureThreshold | int | `3` |  |
