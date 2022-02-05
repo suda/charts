@@ -18,9 +18,9 @@ connections:
   amqpProto: amqp
 
 persistence:
-  # storage class name
-  storageClass: "nfs"
-  # storage volume size
+  # Storage class name
+  # storageClass: ""
+  # Storage volume size
   size: 8Gi
 
 metrics:

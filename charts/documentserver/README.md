@@ -1,6 +1,6 @@
 # documentserver
 
-![Version: 7.0.0](https://img.shields.io/badge/Version-7.0.0-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 7.0.0](https://img.shields.io/badge/AppVersion-7.0.0-informational?style=flat-square)
+![Version: 7.0.1](https://img.shields.io/badge/Version-7.0.1-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 7.0.0](https://img.shields.io/badge/AppVersion-7.0.0-informational?style=flat-square)
 
 Helm chart for installing ONLYOFFICE Docs in Kubernetes
 
@@ -63,7 +63,6 @@ Helm chart for installing ONLYOFFICE Docs in Kubernetes
 | jwt.secret | string | `"MYSECRET"` |  |
 | metrics.enabled | bool | `false` |  |
 | persistence.size | string | `"8Gi"` |  |
-| persistence.storageClass | string | `"nfs"` |  |
 | product.name | string | `"onlyoffice"` |  |
 | proxy.livenessProbe.failureThreshold | int | `3` |  |
 | proxy.livenessProbe.httpGet.path | string | `"/index.html"` |  |

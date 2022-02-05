@@ -2,7 +2,7 @@ apiVersion: v2
 appVersion: 7.0.0
 description: Helm chart for installing ONLYOFFICE Docs in Kubernetes
 name: documentserver
-version: 7.0.0
+version: 7.0.1
 type: application
 sources:
   - https://github.com/suda/charts/tree/main/charts/documentserver
