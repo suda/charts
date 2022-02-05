@@ -32,6 +32,24 @@ entries:
     urls:
     - https://github.com/suda/charts/releases/download/ackee-0.2.0/ackee-0.2.0.tgz
     version: 0.2.0
+  documentserver:
+  - apiVersion: v2
+    appVersion: 7.0.0
+    created: "2022-02-05T21:27:42.39579924Z"
+    description: Helm chart for installing ONLYOFFICE Docs in Kubernetes
+    digest: d81d541e26575c9728b2dec4173024b4bc9bffedfeb2a0e5d2a7c86336d99666
+    home: https://github.com/suda/charts/tree/main/charts/documentserver
+    maintainers:
+    - email: admin@suda.pl
+      name: suda
+      url: https://suda.pl
+    name: documentserver
+    sources:
+    - https://github.com/suda/charts/tree/main/charts/documentserver
+    type: application
+    urls:
+    - https://github.com/suda/charts/releases/download/documentserver-7.0.1/documentserver-7.0.1.tgz
+    version: 7.0.1
   personal-ovpn:
   - apiVersion: v2
     appVersion: "2.4"
@@ -75,4 +93,4 @@ entries:
     urls:
     - https://github.com/suda/charts/releases/download/personal-ovpn-0.2.0/personal-ovpn-0.2.0.tgz
     version: 0.2.0
-generated: "2021-10-05T10:28:59.576329261Z"
+generated: "2022-02-05T21:27:42.395813641Z"
