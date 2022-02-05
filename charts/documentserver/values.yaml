@@ -25,7 +25,7 @@ persistence:
   # Enabling persistence
   enabled: false
   # Storage class name
-  # storageClass: ""
+  storageClass: ""
   # Storage volume size
   size: 8Gi
 
@@ -41,11 +41,11 @@ example:
 
 docservice:
   # docservice replicas quantity
-  replicas: 2
+  replicas: 1
   # docservice container image name
   containerImage: onlyoffice/docs-docservice-de:7.0.0.132
   # Enable readinessProbe for docservice
-  readinessProbeEnabled: true
+  readinessProbeEnabled: false
   readinessProbe:
     failureThreshold: 2
     httpGet:
@@ -55,7 +55,7 @@ docservice:
     successThreshold: 1
     timeoutSeconds: 3
   # Enable livenessProbe for docservice
-  livenessProbeEnabled: true
+  livenessProbeEnabled: false
   livenessProbe:
     failureThreshold: 5
     httpGet:
@@ -65,7 +65,7 @@ docservice:
     successThreshold: 1
     timeoutSeconds: 3
   # Enable startupProbe for docservice
-  startupProbeEnabled: true
+  startupProbeEnabled: false
   startupProbe:
     httpGet:
       path: /index.html
@@ -86,7 +86,7 @@ proxy:
   # docservice proxy container image name
   proxyContainerImage: onlyoffice/docs-proxy-de:7.0.0.132
   # Enable livenessProbe for proxy
-  livenessProbeEnabled: true
+  livenessProbeEnabled: false
   livenessProbe:
     failureThreshold: 3
     httpGet:
@@ -96,7 +96,7 @@ proxy:
     successThreshold: 1
     timeoutSeconds: 3
   # Enable startupProbe for proxy
-  startupProbeEnabled: true
+  startupProbeEnabled: false
   startupProbe:
     httpGet:
       path: /index.html
@@ -115,7 +115,7 @@ proxy:
 
 converter:
   # Converter replicas quantity
-  replicas: 2
+  replicas: 1
   # Converter container image name
   containerImage: onlyoffice/docs-converter-de:7.0.0.132
 
