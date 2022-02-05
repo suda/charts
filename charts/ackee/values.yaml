@@ -2,88 +2,88 @@
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 
-# Overrides name template
+# -- Overrides name template
 nameOverride: ""
-# Overrides fullname template
+# -- Overrides fullname template
 fullnameOverride: ""
-# Number of Ackee replicas to create
+# -- Number of Ackee replicas to create
 replicaCount: 1
 
 ackee:
-  # Address to MongoDB for ackee
+  # -- Address to MongoDB for ackee
   mongodb: mongodb://mongo:27017/ackee
-  # Username for the default Ackee user
+  # -- Username for the default Ackee user
   username: ackee
-  # Name of the secret containing the password for the default Ackee user
+  # -- Name of the secret containing the password for the default Ackee user
   passwordSecret: ackee-password
-  # Specifies how long a generated token is valid
+  # -- Specifies how long a generated token is valid
   ttl: 3600000
-  # Custom name for the tracking script of Ackee to avoid getting blocked by browser extensions
+  # -- Custom name for the tracking script of Ackee to avoid getting blocked by browser extensions
   trackerName: tracker
-  # Setting CORS headers
+  # -- Setting CORS headers
   corsHeaders: ""
 
 image:
-  # Ackee Image name
+  # -- Ackee Image name
   repository: electerious/ackee
-  # Ackee Image tag
+  # -- Ackee Image tag
   tag: 3.2.0
-  # Image pull policy
+  # -- Image pull policy
   pullPolicy: IfNotPresent
 
 service:
-  # Kubernetes Service type
+  # -- Kubernetes Service type
   type: ClusterIP
-  # Ackee service port
+  # -- Ackee service port
   port: 80
 
 ingress:
-  # Enable ingress controller resource
+  # -- Enable ingress controller resource
   enabled: false
-  # Ingress annotations configuration
+  # -- Ingress annotations configuration
   annotations:
     nginx.ingress.kubernetes.io/enable-cors: "true"
     # kubernetes.io/ingress.class: nginx
     # kubernetes.io/tls-acme: "true"
   path: /
-  # A list of ingress hosts
+  # -- A list of ingress hosts
   hosts:
     - chart-example.local
-  # Ingress TLS configuration
+  # -- Ingress TLS configuration
   tls: []
   #  - secretName: chart-example-tls
   #    hosts:
   #      - chart-example.local
 
 livenessProbe:
-  # Turn on and off liveness probe
+  # -- Turn on and off liveness probe
   enabled: true
-  # Delay before liveness probe is initiated
+  # -- Delay before liveness probe is initiated
   initialDelaySeconds: 10
-  # How often to perform the probe
+  # -- How often to perform the probe
   periodSeconds: 60
-  # When the probe times out
+  # -- When the probe times out
   timeoutSeconds: 2
-  # Minimum consecutive successes for the probe
+  # -- Minimum consecutive successes for the probe
   successThreshold: 1
-  # Minimum consecutive failures for the probe
+  # -- Minimum consecutive failures for the probe
   failureThreshold: 3
 
 readinessProbe:
-  # Turn on and off readiness probe
+  # -- Turn on and off readiness probe
   enabled: true
-  # Delay before readiness probe is initiated
+  # -- Delay before readiness probe is initiated
   initialDelaySeconds: 10
-  # How often to perform the probe
+  # -- How often to perform the probe
   periodSeconds: 60
-  # When the probe times out
+  # -- When the probe times out
   timeoutSeconds: 2
-  # Minimum consecutive successes for the probe
+  # -- Minimum consecutive successes for the probe
   successThreshold: 1
-  # Minimum consecutive failures for the probe
+  # -- Minimum consecutive failures for the probe
   failureThreshold: 3
 
-# CPU/Memory resource requests/limits
+# -- CPU/Memory resource requests/limits
 resources: {}
   # We usually recommend not to specify default resources and to leave this as a conscious
   # choice for the user. This also increases chances charts run on environments with little
@@ -96,11 +96,11 @@ resources: {}
   #  cpu: 100m
   #  memory: 128Mi
 
-# Node selector for pod assignment
+# -- Node selector for pod assignment
 nodeSelector: {}
 
-# Optional deployment tolerations
+# -- Optional deployment tolerations
 tolerations: []
 
-# Map of node/pod affinities
+# -- Map of node/pod affinities
 affinity: {}

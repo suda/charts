@@ -40,41 +40,41 @@ The command removes all the Kubernetes components associated with the chart and 
 
 | Key | Type | Default | Description |
 |-----|------|---------|-------------|
-| ackee.corsHeaders | string | `""` |  |
-| ackee.mongodb | string | `"mongodb://mongo:27017/ackee"` |  |
-| ackee.passwordSecret | string | `"ackee-password"` |  |
-| ackee.trackerName | string | `"tracker"` |  |
-| ackee.ttl | int | `3600000` |  |
-| ackee.username | string | `"ackee"` |  |
-| affinity | object | `{}` |  |
-| fullnameOverride | string | `""` |  |
-| image.pullPolicy | string | `"IfNotPresent"` |  |
-| image.repository | string | `"electerious/ackee"` |  |
-| image.tag | string | `"3.2.0"` |  |
-| ingress.annotations."nginx.ingress.kubernetes.io/enable-cors" | string | `"true"` |  |
-| ingress.enabled | bool | `false` |  |
-| ingress.hosts[0] | string | `"chart-example.local"` |  |
+| ackee.corsHeaders | string | `""` | Setting CORS headers |
+| ackee.mongodb | string | `"mongodb://mongo:27017/ackee"` | Address to MongoDB for ackee |
+| ackee.passwordSecret | string | `"ackee-password"` | Name of the secret containing the password for the default Ackee user |
+| ackee.trackerName | string | `"tracker"` | Custom name for the tracking script of Ackee to avoid getting blocked by browser extensions |
+| ackee.ttl | int | `3600000` | Specifies how long a generated token is valid |
+| ackee.username | string | `"ackee"` | Username for the default Ackee user |
+| affinity | object | `{}` | Map of node/pod affinities |
+| fullnameOverride | string | `""` | Overrides fullname template |
+| image.pullPolicy | string | `"IfNotPresent"` | Image pull policy |
+| image.repository | string | `"electerious/ackee"` | Ackee Image name |
+| image.tag | string | `"3.2.0"` | Ackee Image tag |
+| ingress.annotations | object | `{"nginx.ingress.kubernetes.io/enable-cors":"true"}` | Ingress annotations configuration |
+| ingress.enabled | bool | `false` | Enable ingress controller resource |
+| ingress.hosts | list | `["chart-example.local"]` | A list of ingress hosts |
 | ingress.path | string | `"/"` |  |
-| ingress.tls | list | `[]` |  |
-| livenessProbe.enabled | bool | `true` |  |
-| livenessProbe.failureThreshold | int | `3` |  |
-| livenessProbe.initialDelaySeconds | int | `10` |  |
-| livenessProbe.periodSeconds | int | `60` |  |
-| livenessProbe.successThreshold | int | `1` |  |
-| livenessProbe.timeoutSeconds | int | `2` |  |
-| nameOverride | string | `""` |  |
-| nodeSelector | object | `{}` |  |
-| readinessProbe.enabled | bool | `true` |  |
-| readinessProbe.failureThreshold | int | `3` |  |
-| readinessProbe.initialDelaySeconds | int | `10` |  |
-| readinessProbe.periodSeconds | int | `60` |  |
-| readinessProbe.successThreshold | int | `1` |  |
-| readinessProbe.timeoutSeconds | int | `2` |  |
-| replicaCount | int | `1` |  |
-| resources | object | `{}` |  |
-| service.port | int | `80` |  |
-| service.type | string | `"ClusterIP"` |  |
-| tolerations | list | `[]` |  |
+| ingress.tls | list | `[]` | Ingress TLS configuration |
+| livenessProbe.enabled | bool | `true` | Turn on and off liveness probe |
+| livenessProbe.failureThreshold | int | `3` | Minimum consecutive failures for the probe |
+| livenessProbe.initialDelaySeconds | int | `10` | Delay before liveness probe is initiated |
+| livenessProbe.periodSeconds | int | `60` | How often to perform the probe |
+| livenessProbe.successThreshold | int | `1` | Minimum consecutive successes for the probe |
+| livenessProbe.timeoutSeconds | int | `2` | When the probe times out |
+| nameOverride | string | `""` | Overrides name template |
+| nodeSelector | object | `{}` | Node selector for pod assignment |
+| readinessProbe.enabled | bool | `true` | Turn on and off readiness probe |
+| readinessProbe.failureThreshold | int | `3` | Minimum consecutive failures for the probe |
+| readinessProbe.initialDelaySeconds | int | `10` | Delay before readiness probe is initiated |
+| readinessProbe.periodSeconds | int | `60` | How often to perform the probe |
+| readinessProbe.successThreshold | int | `1` | Minimum consecutive successes for the probe |
+| readinessProbe.timeoutSeconds | int | `2` | When the probe times out |
+| replicaCount | int | `1` | Number of Ackee replicas to create |
+| resources | object | `{}` | CPU/Memory resource requests/limits |
+| service.port | int | `80` | Ackee service port |
+| service.type | string | `"ClusterIP"` | Kubernetes Service type |
+| tolerations | list | `[]` | Optional deployment tolerations |
 
 Specify each parameter using the `--set key=value[,key=value]` argument to `helm install`. For example:
 

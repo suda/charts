@@ -2,49 +2,49 @@ product:
   name: onlyoffice
 
 connections:
-  # IP address or the name of the database
+  # -- IP address or the name of the database
   dbHost: postgresql
-  # Database user
+  # -- Database user
   dbUser: postgres
-  # Database server port number
+  # -- Database server port number
   dbPort: "5432"
-  # Secret name to use for the database password
+  # -- Secret name to use for the database password
   dbPasswordSecret: ""
-  # IP address or the name of the redis host
+  # -- IP address or the name of the redis host
   redisHost: redis-master
-  # IP address or the name of the message broker
+  # -- IP address or the name of the message broker
   amqpHost: rabbitmq
-  # Messabe broker user
+  # -- Messabe broker user
   amqpUser: user
-  # Messabe-broker protocol
+  # -- Messabe-broker protocol
   amqpProto: amqp
-  # Secret name to use for the database password
+  # -- Secret name to use for the database password
   amqpPasswordSecret: ""
 
 persistence:
-  # Enabling persistence
+  # -- Enabling persistence
   enabled: false
-  # Storage class name
+  # -- Storage class name
   storageClass: ""
-  # Storage volume size
+  # -- Storage volume size
   size: 8Gi
 
 metrics:
-  # Statsd installation
+  # -- Statsd installation
   enabled: false
 
 example:
-  # Choice of example installation
+  # -- Choice of example installation
   enabled: false
-  # Example container image name
+  # -- Example container image name
   containerImage: onlyoffice/docs-example:7.0.0.132
 
 docservice:
-  # docservice replicas quantity
+  # -- docservice replicas quantity
   replicas: 1
-  # docservice container image name
+  # -- docservice container image name
   containerImage: onlyoffice/docs-docservice-de:7.0.0.132
-  # Enable readinessProbe for docservice
+  # -- Enable readinessProbe for docservice
   readinessProbeEnabled: false
   readinessProbe:
     failureThreshold: 2
@@ -54,7 +54,7 @@ docservice:
     periodSeconds: 10
     successThreshold: 1
     timeoutSeconds: 3
-  # Enable livenessProbe for docservice
+  # -- Enable livenessProbe for docservice
   livenessProbeEnabled: false
   livenessProbe:
     failureThreshold: 5
@@ -64,7 +64,7 @@ docservice:
     periodSeconds: 10
     successThreshold: 1
     timeoutSeconds: 3
-  # Enable startupProbe for docservice
+  # -- Enable startupProbe for docservice
   startupProbeEnabled: false
   startupProbe:
     httpGet:
@@ -73,7 +73,7 @@ docservice:
     failureThreshold: 30
     periodSeconds: 10
 
-  # CPU/Memory resource requests/limits
+  # -- CPU/Memory resource requests/limits
   resources: {}
     # limits:
     #  cpu: 100m
@@ -83,9 +83,9 @@ docservice:
     #  memory: 128Mi
 
 proxy:
-  # docservice proxy container image name
+  # -- docservice proxy container image name
   proxyContainerImage: onlyoffice/docs-proxy-de:7.0.0.132
-  # Enable livenessProbe for proxy
+  # -- Enable livenessProbe for proxy
   livenessProbeEnabled: false
   livenessProbe:
     failureThreshold: 3
@@ -95,7 +95,7 @@ proxy:
     periodSeconds: 10
     successThreshold: 1
     timeoutSeconds: 3
-  # Enable startupProbe for proxy
+  # -- Enable startupProbe for proxy
   startupProbeEnabled: false
   startupProbe:
     httpGet:
@@ -104,7 +104,7 @@ proxy:
     failureThreshold: 30
     periodSeconds: 10
 
-  # CPU/Memory resource requests/limits
+  # -- CPU/Memory resource requests/limits
   resources: {}
     # limits:
     #  cpu: 100m
@@ -114,12 +114,12 @@ proxy:
     #  memory: 128Mi
 
 converter:
-  # Converter replicas quantity
+  # -- Converter replicas quantity
   replicas: 1
-  # Converter container image name
+  # -- Converter container image name
   containerImage: onlyoffice/docs-converter-de:7.0.0.132
 
-  # CPU/Memory resource requests/limits
+  # -- CPU/Memory resource requests/limits
   resources: {}
     # limits:
     #  cpu: 100m
@@ -129,28 +129,28 @@ converter:
     #  memory: 128Mi
 
 jwt:
-  # JWT enabling parameter
+  # -- JWT enabling parameter
   enabled: true
-  # JWT secret
+  # -- JWT secret
   secret: MYSECRET
 
 service:
-  # documentserver service type
+  # -- documentserver service type
   type: ClusterIP
-  # documentserver service port
+  # -- documentserver service port
   port: 8888
 
 ingress:
-  # Installation of ingress service
+  # -- Installation of ingress service
   enabled: false
   ssl:
-    # Installation SSL for ingress service
+    # -- Installation SSL for ingress service
     enabled: false
-    # Host for ingress
+    # -- Host for ingress
     host: example.com
-    # Secret name for SSL
+    # -- Secret name for SSL
     secret: tls
 
 grafana_ingress:
-  # Installation grafana of ingress service
+  # -- Installation grafana of ingress service
   enabled: false
