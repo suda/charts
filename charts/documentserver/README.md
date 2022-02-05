@@ -21,14 +21,16 @@ Helm chart for installing ONLYOFFICE Docs in Kubernetes
 | Key | Type | Default | Description |
 |-----|------|---------|-------------|
 | connections.amqpHost | string | `"rabbitmq"` |  |
+| connections.amqpPasswordSecret | string | `""` |  |
 | connections.amqpProto | string | `"amqp"` |  |
 | connections.amqpUser | string | `"user"` |  |
 | connections.dbHost | string | `"postgresql"` |  |
+| connections.dbPasswordSecret | string | `""` |  |
 | connections.dbPort | string | `"5432"` |  |
 | connections.dbUser | string | `"postgres"` |  |
 | connections.redisHost | string | `"redis-master"` |  |
 | converter.containerImage | string | `"onlyoffice/docs-converter-de:7.0.0.132"` |  |
-| converter.replicas | int | `2` |  |
+| converter.replicas | int | `1` |  |
 | converter.resources | object | `{}` |  |
 | docservice.containerImage | string | `"onlyoffice/docs-docservice-de:7.0.0.132"` |  |
 | docservice.livenessProbe.failureThreshold | int | `5` |  |
@@ -37,21 +39,21 @@ Helm chart for installing ONLYOFFICE Docs in Kubernetes
 | docservice.livenessProbe.periodSeconds | int | `10` |  |
 | docservice.livenessProbe.successThreshold | int | `1` |  |
 | docservice.livenessProbe.timeoutSeconds | int | `3` |  |
-| docservice.livenessProbeEnabled | bool | `true` |  |
+| docservice.livenessProbeEnabled | bool | `false` |  |
 | docservice.readinessProbe.failureThreshold | int | `2` |  |
 | docservice.readinessProbe.httpGet.path | string | `"/index.html"` |  |
 | docservice.readinessProbe.httpGet.port | int | `8000` |  |
 | docservice.readinessProbe.periodSeconds | int | `10` |  |
 | docservice.readinessProbe.successThreshold | int | `1` |  |
 | docservice.readinessProbe.timeoutSeconds | int | `3` |  |
-| docservice.readinessProbeEnabled | bool | `true` |  |
-| docservice.replicas | int | `2` |  |
+| docservice.readinessProbeEnabled | bool | `false` |  |
+| docservice.replicas | int | `1` |  |
 | docservice.resources | object | `{}` |  |
 | docservice.startupProbe.failureThreshold | int | `30` |  |
 | docservice.startupProbe.httpGet.path | string | `"/index.html"` |  |
 | docservice.startupProbe.httpGet.port | int | `8000` |  |
 | docservice.startupProbe.periodSeconds | int | `10` |  |
-| docservice.startupProbeEnabled | bool | `true` |  |
+| docservice.startupProbeEnabled | bool | `false` |  |
 | example.containerImage | string | `"onlyoffice/docs-example:7.0.0.132"` |  |
 | example.enabled | bool | `false` |  |
 | grafana_ingress.enabled | bool | `false` |  |
@@ -64,6 +66,7 @@ Helm chart for installing ONLYOFFICE Docs in Kubernetes
 | metrics.enabled | bool | `false` |  |
 | persistence.enabled | bool | `false` |  |
 | persistence.size | string | `"8Gi"` |  |
+| persistence.storageClass | string | `""` |  |
 | product.name | string | `"onlyoffice"` |  |
 | proxy.livenessProbe.failureThreshold | int | `3` |  |
 | proxy.livenessProbe.httpGet.path | string | `"/index.html"` |  |
@@ -71,13 +74,13 @@ Helm chart for installing ONLYOFFICE Docs in Kubernetes
 | proxy.livenessProbe.periodSeconds | int | `10` |  |
 | proxy.livenessProbe.successThreshold | int | `1` |  |
 | proxy.livenessProbe.timeoutSeconds | int | `3` |  |
-| proxy.livenessProbeEnabled | bool | `true` |  |
+| proxy.livenessProbeEnabled | bool | `false` |  |
 | proxy.proxyContainerImage | string | `"onlyoffice/docs-proxy-de:7.0.0.132"` |  |
 | proxy.resources | object | `{}` |  |
 | proxy.startupProbe.failureThreshold | int | `30` |  |
 | proxy.startupProbe.httpGet.path | string | `"/index.html"` |  |
 | proxy.startupProbe.httpGet.port | int | `8888` |  |
 | proxy.startupProbe.periodSeconds | int | `10` |  |
-| proxy.startupProbeEnabled | bool | `true` |  |
+| proxy.startupProbeEnabled | bool | `false` |  |
 | service.port | int | `8888` |  |
 | service.type | string | `"ClusterIP"` |  |
