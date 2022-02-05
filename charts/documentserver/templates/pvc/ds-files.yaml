@@ -3,8 +3,8 @@ kind: PersistentVolumeClaim
 metadata:
   name: ds-files
 spec:
-  {{- if Values.persistence.storageClass }}
-  storageClassName: {{ if (eq "-" Values.persistence.storageClass) }}""{{- else }}{{ Values.persistence.storageClass | quote }}{{- end }}
+  {{- if .Values.persistence.storageClass }}
+  storageClassName: {{ if (eq "-" .Values.persistence.storageClass) }}""{{- else }}{{ .Values.persistence.storageClass | quote }}{{- end }}
   {{- end }}
   accessModes:
     - ReadWriteMany
