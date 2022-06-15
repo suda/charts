@@ -30,7 +30,7 @@ spec:
         image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
         env:
           - name: SERVER_PUBLIC_URL
-            value: "{{ .Values.service.protocol | lower }}://{{ .Values.externalHostname | default $hostname }}:{{ .Values.externalPort | default .Values.service.port }}"
+            value: "{{ .Values.service.protocol | lower }}://{{ .Values.automatic.externalHostname | default $hostname }}:{{ .Values.externalPort | default .Values.service.port }}"
           - name: CIPHER
             value: "{{ .Values.automatic.cipher }}"
           - name: DIGEST_ALGORYTHM
@@ -93,7 +93,7 @@ spec:
         image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
         env:
           - name: EASYRSA_REQ_CN
-            value: {{ .Values.externalHostname | default $hostname }}
+            value: {{ .Values.automatic.externalHostname | default $hostname }}
           - name: EASYRSA_BATCH
             value: "yes"
         command:
