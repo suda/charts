@@ -4,7 +4,7 @@ description: A Helm chart for Ackee analytics tool
 name: ackee
 version: 0.2.2-rc0
 type: application
-kubeVersion: '>= 1.19'
+kubeVersion: ^1.19.0
 sources:
   - https://github.com/suda/charts/tree/main/charts/ackee
 home: https://github.com/suda/charts/tree/main/charts/ackee

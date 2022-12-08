@@ -4,7 +4,7 @@ project:
   url: https://ackee.electerious.com/
   description: Self-hosted analytics tool for those who care about privacy
 repository:
-  url: https://suda.github.io/charts/
+  url: https://phaoll.github.io/charts/ # temporary changes for test purposes
   name: ackee
 chart:
   name: ackee
