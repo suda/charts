@@ -45,7 +45,7 @@ But if you really want to, you can enable it by setting `limitTraficToNamespace`
 
 | Name | Email | Url |
 | ---- | ------ | --- |
-| suda | admin@suda.pl |  |
+| suda | <admin@suda.pl> |  |
 
 ## Values
 
