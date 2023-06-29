@@ -23,6 +23,7 @@ See [Artifact Hub](https://artifacthub.io/packages/search?repo=suda) or [charts]
 ## Acknowledgements
 
 * [`documentserver` chart](charts/documentserver) is based on [ONLYOFFICE chart/documentation](https://github.com/ONLYOFFICE/Kubernetes-Docs)
+* [`scaleway-webhook` chart](charts/scaleway-webhook) is based on [`cert-manager-webhook-scaleway` deployment chart](https://github.com/scaleway/cert-manager-webhook-scaleway/tree/main/deploy)
 
 ## License
 
