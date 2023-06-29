@@ -93,4 +93,18 @@ entries:
     urls:
     - https://github.com/suda/charts/releases/download/personal-ovpn-0.2.0/personal-ovpn-0.2.0.tgz
     version: 0.2.0
-generated: "2022-02-05T21:27:42.395813641Z"
+  scaleway-webhook:
+  - apiVersion: v1
+    appVersion: v0.0.1
+    created: "2023-06-29T12:56:01.720792301Z"
+    description: Cert-Manager webhook for Scaleway
+    digest: 3e5ee9ad79a2aa7a1f5ce0d8f31ae4b532371e8021e5299c14427678a412359a
+    maintainers:
+    - email: admin@suda.pl
+      name: suda
+      url: https://suda.pl
+    name: scaleway-webhook
+    urls:
+    - https://github.com/suda/charts/releases/download/scaleway-webhook-0.0.1/scaleway-webhook-0.0.1.tgz
+    version: 0.0.1
+generated: "2023-06-29T12:56:01.72093071Z"
