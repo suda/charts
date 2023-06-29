@@ -3,3 +3,7 @@ appVersion: "v0.0.1"
 description: Cert-Manager webhook for Scaleway
 name: scaleway-webhook
 version: 0.0.1
+maintainers:
+  - name: suda
+    email: admin@suda.pl
+    url: https://suda.pl

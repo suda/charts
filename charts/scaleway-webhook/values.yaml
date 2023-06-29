@@ -13,8 +13,8 @@ nameOverride: ""
 fullnameOverride: ""
 
 pki:
-  caDuration: 43800h # 5y
-  servingCertificateDuration: 8760h # 1y
+  caDuration: 43800h  # 5y
+  servingCertificateDuration: 8760h  # 1y
 
 secret:
   accessKey: ""
