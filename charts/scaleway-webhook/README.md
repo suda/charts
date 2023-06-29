@@ -4,6 +4,12 @@
 
 Cert-Manager webhook for Scaleway
 
+## Maintainers
+
+| Name | Email | Url |
+| ---- | ------ | --- |
+| suda | <admin@suda.pl> | <https://suda.pl> |
+
 ## Values
 
 | Key | Type | Default | Description |
