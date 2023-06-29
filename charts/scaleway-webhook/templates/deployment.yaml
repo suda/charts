@@ -39,6 +39,11 @@ spec:
           - secretRef:
               name: {{ .Values.secret.name }}
           {{ end }}
+          {{ if .Values.secret.existingSecretName }}
+          envFrom:
+          - secretRef:
+              name: {{ .Values.secret.existingSecretName }}
+          {{ end }}
           ports:
             - name: https
               containerPort: 443
