@@ -123,6 +123,29 @@ entries:
   tansu:
   - apiVersion: v2
     appVersion: main
+    created: "2026-04-08T15:43:18.612673342Z"
+    description: A Helm chart for Tansu - a lightweight Kafka-compatible message broker
+    digest: 77de98ac64847e4de035f07d5e58d6cd19c805115d5da80e38356e6044586061
+    home: https://tansu.io
+    keywords:
+    - kafka
+    - messaging
+    - streaming
+    - tansu
+    maintainers:
+    - email: admin@suda.pl
+      name: suda
+      url: https://suda.pl
+    name: tansu
+    sources:
+    - https://github.com/tansu-io/tansu
+    - https://github.com/suda/charts/tree/main/charts/tansu
+    type: application
+    urls:
+    - https://github.com/suda/charts/releases/download/tansu-0.3.0/tansu-0.3.0.tgz
+    version: 0.3.0
+  - apiVersion: v2
+    appVersion: main
     created: "2026-04-08T15:09:49.864603611Z"
     description: A Helm chart for Tansu - a lightweight Kafka-compatible message broker
     digest: 3fefe739d6842188b9e2996b7249dba940ffc3d02ac575ca94488c3863e9c476
@@ -167,4 +190,4 @@ entries:
     urls:
     - https://github.com/suda/charts/releases/download/tansu-0.1.0/tansu-0.1.0.tgz
     version: 0.1.0
-generated: "2026-04-08T15:09:49.864619872Z"
+generated: "2026-04-08T15:43:18.612707636Z"
