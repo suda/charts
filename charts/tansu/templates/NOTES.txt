@@ -1,0 +1,20 @@
+Tansu has been deployed!
+
+1. Get the Kafka endpoint:
+   Kafka is available at: {{ include "tansu.fullname" . }}.{{ .Release.Namespace }}.svc.cluster.local:{{ .Values.service.port }}
+
+2. To connect from within the cluster, use:
+   bootstrap.servers={{ include "tansu.fullname" . }}.{{ .Release.Namespace }}.svc.cluster.local:{{ .Values.service.port }}
+
+{{- if .Values.metrics.enabled }}
+
+3. Metrics are available at:
+   http://{{ include "tansu.fullname" . }}.{{ .Release.Namespace }}.svc.cluster.local:{{ .Values.service.metricsPort }}/metrics
+{{- end }}
+
+{{- if .Values.metrics.serviceMonitor.enabled }}
+
+4. ServiceMonitor is enabled - Prometheus will automatically scrape metrics.
+{{- end }}
+
+For more information, visit: https://tansu.io
