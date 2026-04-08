@@ -41,6 +41,9 @@ spec:
             {{- if eq .Values.storage.engine "postgres" }}
             - "--storage-engine"
             - {{ include "tansu.postgresUrl" . | quote }}
+            {{- else if eq .Values.storage.engine "sqlite" }}
+            - "--storage-engine"
+            - "sqlite://{{ .Values.storage.sqlite.path }}"
             {{- end }}
             {{- with .Values.extraArgs }}
             {{- toYaml . | nindent 12 }}
@@ -84,6 +87,17 @@ spec:
             periodSeconds: 5
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
+          {{- if .Values.persistence.enabled }}
+          volumeMounts:
+            - name: data
+              mountPath: /data
+          {{- end }}
+      {{- if .Values.persistence.enabled }}
+      volumes:
+        - name: data
+          persistentVolumeClaim:
+            claimName: {{ include "tansu.fullname" . }}-data
+      {{- end }}
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}

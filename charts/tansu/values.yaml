@@ -19,9 +19,9 @@ cluster:
   id: "tansu-cluster"
 
 # Storage engine configuration
-# Tansu supports PostgreSQL for metadata storage
+# Tansu supports PostgreSQL, SQLite, or memory for metadata storage
 storage:
-  # Storage engine type: "postgres" or "memory"
+  # Storage engine type: "postgres", "sqlite", or "memory"
   engine: "postgres"
 
   # PostgreSQL connection settings (when engine is "postgres")
@@ -40,6 +40,23 @@ storage:
     # Use existing secret for password
     existingSecret: ""
     existingSecretKey: "password"
+
+  # SQLite settings (when engine is "sqlite")
+  sqlite:
+    # Path to SQLite database file (inside the container)
+    path: "/data/tansu.db"
+
+# Persistence configuration (for SQLite storage)
+persistence:
+  enabled: false
+  # Storage class (leave empty for default)
+  storageClass: ""
+  # Access mode
+  accessMode: ReadWriteOnce
+  # Size of the PVC
+  size: 1Gi
+  # Annotations for the PVC
+  annotations: {}
 
 # Kafka listener configuration
 kafka:
