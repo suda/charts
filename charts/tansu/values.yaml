@@ -1,95 +1,118 @@
 # Default values for tansu
 # This is a YAML-formatted file.
 
+# -- Number of Tansu replicas
 replicaCount: 1
 
 image:
+  # -- Tansu image repository
   repository: ghcr.io/tansu-io/tansu
+  # -- Image pull policy
   pullPolicy: IfNotPresent
-  # Overrides the image tag whose default is the chart appVersion.
+  # -- Overrides the image tag whose default is the chart appVersion
   tag: ""
 
+# -- Docker registry secrets
 imagePullSecrets: []
+# -- Override the name of the chart
 nameOverride: ""
+# -- Override the full name of the chart
 fullnameOverride: ""
 
 # Tansu cluster configuration
 cluster:
-  # Unique cluster ID
+  # -- Unique cluster ID
   id: "tansu-cluster"
 
 # Storage engine configuration
 # Tansu supports PostgreSQL, SQLite, or memory for metadata storage
 storage:
-  # Storage engine type: "postgres", "sqlite", or "memory"
+  # -- Storage engine type: "postgres", "sqlite", or "memory"
   engine: "postgres"
 
   # PostgreSQL connection settings (when engine is "postgres")
   postgres:
-    # Direct connection string (takes precedence if set)
-    # Example: "postgres://user:pass@host:5432/dbname"
+    # -- Direct PostgreSQL connection URL (takes precedence over individual settings)
     url: ""
-
-    # Or use individual settings
+    # -- PostgreSQL host
     host: "localhost"
+    # -- PostgreSQL port
     port: 5432
+    # -- PostgreSQL database name
     database: "tansu"
+    # -- PostgreSQL username
     username: "tansu"
+    # -- PostgreSQL password (ignored if existingSecret is set)
     password: ""
-
-    # Use existing secret for password
+    # -- Name of existing secret containing PostgreSQL password
     existingSecret: ""
+    # -- Key in existing secret containing the password
     existingSecretKey: "password"
 
   # SQLite settings (when engine is "sqlite")
   sqlite:
-    # Path to SQLite database file (inside the container)
+    # -- Path to SQLite database file inside the container
     path: "/data/tansu.db"
 
 # Persistence configuration (for SQLite storage)
 persistence:
+  # -- Enable persistence for SQLite storage
   enabled: false
-  # Storage class (leave empty for default)
+  # -- Storage class (leave empty for default)
   storageClass: ""
-  # Access mode
+  # -- PVC access mode
   accessMode: ReadWriteOnce
-  # Size of the PVC
+  # -- Size of the persistent volume
   size: 1Gi
-  # Annotations for the PVC
+  # -- Annotations for the PVC
   annotations: {}
 
 # Kafka listener configuration
 kafka:
-  # Port for Kafka protocol
+  # -- Port for Kafka protocol
   port: 9092
-  # Advertised listener URL (auto-generated if empty)
+  # -- Advertised listener URL (auto-generated if empty)
   advertisedListenerUrl: ""
 
 # Metrics configuration
 metrics:
+  # -- Enable metrics endpoint
   enabled: true
+  # -- Metrics port
   port: 9100
 
   serviceMonitor:
+    # -- Enable Prometheus ServiceMonitor
     enabled: false
+    # -- ServiceMonitor scrape interval
     interval: 30s
+    # -- Additional labels for the ServiceMonitor
     labels: {}
 
 service:
+  # -- Kubernetes service type
   type: ClusterIP
+  # -- Kafka service port
   port: 9092
+  # -- Metrics service port
   metricsPort: 9100
 
 serviceAccount:
+  # -- Create a service account
   create: true
+  # -- Annotations for the service account
   annotations: {}
+  # -- Name of the service account (auto-generated if empty)
   name: ""
 
+# -- Annotations for pods
 podAnnotations: {}
 
+# -- Security context for pods
 podSecurityContext: {}
   # fsGroup: 2000
 
+# -- Security context for containers
 securityContext: {}
   # capabilities:
   #   drop:
@@ -100,22 +123,29 @@ securityContext: {}
 
 resources:
   requests:
+    # -- CPU request
     cpu: 100m
+    # -- Memory request
     memory: 256Mi
   limits:
+    # -- CPU limit
     cpu: 500m
+    # -- Memory limit
     memory: 512Mi
 
+# -- Node selector for pod assignment
 nodeSelector: {}
 
+# -- Tolerations for pod assignment
 tolerations: []
 
+# -- Affinity rules for pod assignment
 affinity: {}
 
-# Extra environment variables
+# -- Extra environment variables for the container
 extraEnv: []
   # - name: RUST_LOG
   #   value: "debug"
 
-# Extra arguments to pass to tansu
+# -- Extra arguments to pass to tansu
 extraArgs: []
