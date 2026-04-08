@@ -76,13 +76,18 @@ kafka:
 
 # Metrics configuration
 metrics:
-  # -- Enable metrics endpoint
+  # -- Enable metrics
   enabled: true
-  # -- Metrics port
+  # -- Metrics port (legacy, not used by Tansu)
   port: 9100
 
+  # OTLP exporter configuration (Tansu uses OpenTelemetry for metrics)
+  otlp:
+    # -- OTLP endpoint URL (e.g., http://alloy.alloy.svc.cluster.local:4317)
+    endpoint: ""
+
   serviceMonitor:
-    # -- Enable Prometheus ServiceMonitor
+    # -- Enable Prometheus ServiceMonitor (only useful with OTLP collector that exposes /metrics)
     enabled: false
     # -- ServiceMonitor scrape interval
     interval: 30s

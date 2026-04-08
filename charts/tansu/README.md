@@ -1,6 +1,6 @@
 # tansu
 
-![Version: 0.2.0](https://img.shields.io/badge/Version-0.2.0-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: main](https://img.shields.io/badge/AppVersion-main-informational?style=flat-square)
+![Version: 0.3.0](https://img.shields.io/badge/Version-0.3.0-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: main](https://img.shields.io/badge/AppVersion-main-informational?style=flat-square)
 
 A Helm chart for Tansu - a lightweight Kafka-compatible message broker
 
@@ -32,9 +32,10 @@ A Helm chart for Tansu - a lightweight Kafka-compatible message broker
 | imagePullSecrets | list | `[]` | Docker registry secrets |
 | kafka.advertisedListenerUrl | string | `""` | Advertised listener URL (auto-generated if empty) |
 | kafka.port | int | `9092` | Port for Kafka protocol |
-| metrics.enabled | bool | `true` | Enable metrics endpoint |
-| metrics.port | int | `9100` | Metrics port |
-| metrics.serviceMonitor.enabled | bool | `false` | Enable Prometheus ServiceMonitor |
+| metrics.enabled | bool | `true` | Enable metrics |
+| metrics.otlp.endpoint | string | `""` | OTLP endpoint URL (e.g., http://alloy.alloy.svc.cluster.local:4317) |
+| metrics.port | int | `9100` | Metrics port (legacy, not used by Tansu) |
+| metrics.serviceMonitor.enabled | bool | `false` | Enable Prometheus ServiceMonitor (only useful with OTLP collector that exposes /metrics) |
 | metrics.serviceMonitor.interval | string | `"30s"` | ServiceMonitor scrape interval |
 | metrics.serviceMonitor.labels | object | `{}` | Additional labels for the ServiceMonitor |
 | nameOverride | string | `""` | Override the name of the chart |

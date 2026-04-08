@@ -45,6 +45,10 @@ spec:
             - "--storage-engine"
             - "sqlite://{{ .Values.storage.sqlite.path }}"
             {{- end }}
+            {{- if and .Values.metrics.enabled .Values.metrics.otlp.endpoint }}
+            - "--otlp-endpoint-url"
+            - {{ .Values.metrics.otlp.endpoint | quote }}
+            {{- end }}
             {{- with .Values.extraArgs }}
             {{- toYaml . | nindent 12 }}
             {{- end }}
