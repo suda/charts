@@ -120,4 +120,28 @@ entries:
     urls:
     - https://github.com/suda/charts/releases/download/scaleway-webhook-0.0.1/scaleway-webhook-0.0.1.tgz
     version: 0.0.1
-generated: "2023-06-29T15:15:12.186906876Z"
+  tansu:
+  - apiVersion: v2
+    appVersion: main
+    created: "2026-04-08T14:48:01.898654157Z"
+    description: A Helm chart for Tansu - a lightweight Kafka-compatible message broker
+    digest: 693b0a14a10d7c43c3ffbaf2fbe7c4ad127735608bdfff8e6e622f08aded55fd
+    home: https://tansu.io
+    keywords:
+    - kafka
+    - messaging
+    - streaming
+    - tansu
+    maintainers:
+    - email: admin@suda.pl
+      name: suda
+      url: https://suda.pl
+    name: tansu
+    sources:
+    - https://github.com/tansu-io/tansu
+    - https://github.com/suda/charts/tree/main/charts/tansu
+    type: application
+    urls:
+    - https://github.com/suda/charts/releases/download/tansu-0.1.0/tansu-0.1.0.tgz
+    version: 0.1.0
+generated: "2026-04-08T14:48:01.898672582Z"
