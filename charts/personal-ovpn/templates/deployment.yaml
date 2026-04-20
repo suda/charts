@@ -33,20 +33,27 @@ spec:
             capabilities:
               add:
                 - NET_ADMIN
+            privileged: {{ .Values.security.privileged }}
+          lifecycle:
+            postStart:
+              exec:
+                command:
+                  - "sysctl"
+                  - "net.ipv4.ip_forward={{ .Values.security.ipForward }}"
           volumeMounts:
             {{- if .Values.automatic.enabled }}
             - name: data
               mountPath: {{ .Values.automatic.persistence.mountPath }}
             {{- else }}
-            - name: ovpn0-key
+            - name: {{ .Values.secretName }}-key
               mountPath: /etc/openvpn/pki/private
-            - name: ovpn0-cert
+            - name: {{ .Values.secretName }}-cert
               mountPath: /etc/openvpn/pki/issued
-            - name: ovpn0-pki
+            - name: {{ .Values.secretName }}-pki
               mountPath: /etc/openvpn/pki
-            - name: ovpn0-conf
+            - name: {{ .Values.secretName }}-conf
               mountPath: /etc/openvpn
-            - name: ccd0
+            - name: {{ .Values.secretName }}-ccd0
               mountPath: /etc/openvpn/ccd
             {{- end }}
           resources:
@@ -69,21 +76,21 @@ spec:
           persistentVolumeClaim:
             claimName: {{ if .Values.automatic.persistence.existingClaim }}{{ .Values.automatic.persistence.existingClaim }}{{- else }}{{ include "personal-ovpn.name" . }}{{- end }}
         {{- else }}
-        - name: ovpn0-key
+        - name: {{ .Values.secretName }}-key
           secret:
-            secretName: ovpn0-key
+            secretName: {{ .Values.secretName }}-key
             defaultMode: 0600
-        - name: ovpn0-cert
+        - name: {{ .Values.secretName }}-cert
           secret:
-            secretName: ovpn0-cert
-        - name: ovpn0-pki
+            secretName: {{ .Values.secretName }}-cert
+        - name: {{ .Values.secretName }}-pki
           secret:
-            secretName: ovpn0-pki
+            secretName: {{ .Values.secretName }}-pki
             defaultMode: 0600
-        - name: ovpn0-conf
+        - name: {{ .Values.secretName }}-conf
           configMap:
-            name: ovpn0-conf
-        - name: ccd0
+            name: {{ .Values.secretName }}-conf
+        - name: {{ .Values.secretName }}-ccd0
           configMap:
-            name: ccd0
+            name: {{ .Values.secretName }}-ccd0
         {{- end }}
