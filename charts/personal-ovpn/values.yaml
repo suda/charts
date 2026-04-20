@@ -23,6 +23,10 @@ service:
   # service.type -- Service type
   type: NodePort
 
+# securityContext -- security context for pod
+security:
+  privileged: false
+  ipForward: 0
 # limitTraficToNamespace -- limit network traffic just to OpenVPN namespace
 limitTraficToNamespace: true
 # limitedCidr -- CIDR to be blocked out

@@ -73,6 +73,8 @@ But if you really want to, you can enable it by setting `limitTraficToNamespace`
 | namespace | object | `{"name":"ovpn"}` | release namespace |
 | nodeSelector | object | `{}` | node labels for pod assignment |
 | resources | object | `{}` | pod resource requests & limits |
+| security.ipForward | int | `0` |  |
+| security.privileged | bool | `false` |  |
 | service.port | int | `31304` | OpenVPN port |
 | service.protocol | string | `"TCP"` | OpenVPN protocol |
 | service.type | string | `"NodePort"` | Service type |
