@@ -16,6 +16,9 @@ spec:
     - port: {{ .Values.service.port }}
       targetPort: openvpn
       protocol: {{ .Values.service.protocol }}
+      {{- if .Values.service.nodePort }}
+      nodePort: {{ .Values.service.nodePort }}
+      {{- end }}
       name: openvpn
   selector:
     app.kubernetes.io/name: {{ include "personal-ovpn.name" . }}

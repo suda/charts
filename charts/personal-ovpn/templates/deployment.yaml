@@ -33,6 +33,13 @@ spec:
             capabilities:
               add:
                 - NET_ADMIN
+            privileged: {{ .Values.security.privileged }}
+          lifecycle:
+            postStart:
+              exec:
+                command:
+                  - "sysctl"
+                  - "net.ipv4.ip_forward={{ .Values.security.ipForward }}"
           volumeMounts:
             {{- if .Values.automatic.enabled }}
             - name: data
